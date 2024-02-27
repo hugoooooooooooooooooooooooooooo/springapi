@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado profesores</title>
+    <link rel="stylesheet" href="/css/estilos2.css">
+</head>
+<body>
+<table>
+    <caption>Listado de profesores</caption>
+    <thead>
+    <tr>
+        <th>Nombre</th><th>Edad</th><th>Archivo</th><th>FotoDisco</th><th>FotoBlob</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="profesor : ${listaProfesores}">
+        <td th:text="${profesor.nombre}"></td>
+        <td th:text="${profesor.edad}"></td>
+        <td th:text="${profesor.imagen}"></td>
+        <td id="disco"><img th:src="@{/img/{img} (img=${profesor.imagen})}" alt="Imagen Profesor" /></td>
+        <td id="blob"><img th:src="@{'/api/' + ${profesor.id} + '/foto'}" alt="Imagen Profesor" /></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
